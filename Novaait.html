@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bestie Therapist 💖</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ffb6c1, #ffd700, #add8e6, #dda0dd);
+            background-size: 600% 600%;
+            animation: gradientBG 20s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1em;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            border-bottom: 2px dashed #ff69b4;
+            color: #ff69b4;
+        }
+
+        .container {
+            padding: 2em;
+        }
+
+        .chat-box, .journal-box {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            font-size: 1em;
+            border-radius: 12px;
+            border: 2px solid #ff69b4;
+            resize: none;
+            background-color: #fffafa;
+            color: #333;
+            margin-bottom: 15px;
+            overflow-y: auto;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .games-section, .journal-section, .spotify-section, .customize-section {
+            margin-top: 3em;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1em;
+            border-radius: 15px;
+        }
+
+        .emoji-btn {
+            font-size: 1.5em;
+            margin: 0.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>AI Bestie Therapist 💖</header>
+    <div class="container">
+        <h2>Talk to Your Bestie</h2>
+        <textarea class="chat-box" id="chat" placeholder="Tell me what's up bestie 💅..."></textarea>
+        <button class="btn" onclick="sendMessage()">Send</button>
+        <div id="response"></div>
+
+        <div class="spotify-section">
+            <h2>🎧 Vibe With Me</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <div class="games-section">
+            <h2>🎮 Fun & Games</h2>
+            <button class="btn" onclick="playGuessNumber()">🔢 Guess the Number</button>
+            <button class="btn" onclick="playTicTacToe()">⭕❌ Tic Tac Toe</button>
+            <button class="btn" onclick="playRockPaperScissors()">✊✋✌️ Rock Paper Scissors</button>
+            <button class="btn" onclick="playMemoryGame()">🧠 Memory Match</button>
+        </div>
+
+        <div class="journal-section">
+            <h2>📓 Secret Glittery Journal</h2>
+            <input type="password" id="emojiPassword" placeholder="💅 Emoji passcode only 💅">
+            <textarea class="journal-box" id="journal" placeholder="Your glittery private thoughts... 💖"></textarea>
+        </div>
+
+        <div class="customize-section">
+            <h2>🧍 Customize Your Bestie</h2>
+            <label>Style:</label>
+            <select>
+                <option>Space Buns 🌌</option>
+                <option>Frog Hoodie 🐸</option>
+                <option>Heart Glasses 💖</option>
+            </select><br><br>
+            <label>Personality:</label>
+            <select>
+                <option>Caring Softie 💗</option>
+                <option>Sass Queen 🔥</option>
+                <option>Chill Vibes 🧃</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const chat = document.getElementById("chat").value.toLowerCase();
+            let response = "";
+            if (chat.includes("failed") || chat.includes("test")) {
+                response = "Ugh bestie, it’s okay 😭 what subject was it? Let’s talk about it 💬";
+            } else if (chat.includes("broke up") || chat.includes("friend")) {
+                response = "Noooo not the fake friend again 😤 Spill it. What did they do this time?";
+            } else if (chat.includes("sad") || chat.includes("tired")) {
+                response = "Aww 🥺 want me to hype you up or distract you with a game or music? 💖";
+            } else {
+                response = "Tell me more, bestie. I’m all ears 💅✨";
+            }
+            document.getElementById("response").innerText = response;
+        }
+
+        function playGuessNumber() {
+            const number = Math.floor(Math.random() * 10) + 1;
+            const guess = prompt("Guess a number from 1 to 10!");
+            alert(guess == number ? "Yaaas you got it! 🎉" : `Nope! It was ${number}. Try again! 💫`);
+        }
+
+        function playTicTacToe() {
+            alert("Tic Tac Toe is coming soon! Just imagine you won 😉");
+        }
+
+        function playRockPaperScissors() {
+            const choices = ["rock", "paper", "scissors"];
+            const user = prompt("Rock, paper or scissors?").toLowerCase();
+            const ai = choices[Math.floor(Math.random() * 3)];
+            if (user === ai) alert("Draw! Great minds think alike 💅");
+            else if ((user === "rock" && ai === "scissors") || (user === "paper" && ai === "rock") || (user === "scissors" && ai === "paper")) alert(`You win! You: ${user} | Me: ${ai} 💖`);
+            else alert(`You lose bestie 😭 You: ${user} | Me: ${ai}`);
+        }
+
+        function playMemoryGame() {
+            alert("Memory Match: Coming soon! Stay tuned for sparkle magic ✨");
+        }
+    </script>
+</body>
+</html>
